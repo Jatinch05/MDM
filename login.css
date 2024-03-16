@@ -129,7 +129,7 @@ body {
   font-size: var(--font-size-77xl);
   font-family: var(--font-open-sans);
 }
-.password,
+.forgot,
 .user-id {
   position: relative;
   z-index: 2;
@@ -140,7 +140,7 @@ body {
   display: inline-block;
   flex-shrink: 0;
 }
-.password {
+.forgot {
   line-height: 17px;
   white-space: nowrap;
 }
@@ -193,12 +193,13 @@ body {
   position: relative;
   line-height: 0%; /* Adjusted to percentage */
   z-index: 3; /* Increased z-index */
-  padding: 10px 20px; /* Adjust padding as needed */
+  padding: 15px 25px; /* Adjust padding as needed */
   border: none;
   background-color: #28a745; /* Adjust button background color */
   color: #fff; /* Adjust button text color */
   border-radius: 5px; /* Adjust border radius as needed */
   cursor: pointer;
+  font-size: large;
 }
 
 .forgot,
@@ -271,7 +272,6 @@ body {
  
  
   .forgot,
-  .password,
   .sign-up,
   .user-id {
     font-size: var(--font-size-base);
@@ -283,3 +283,7 @@ body {
   .container {
     gap: 129px 0;
   } 
+  .reg{
+    text-decoration: none;
+    color: #fff;
+  }

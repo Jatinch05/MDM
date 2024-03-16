@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
    
-    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="register.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Open Sans:wght@400&display=swap"
@@ -49,23 +49,37 @@
         </div>
         <div class="forgot-pass-frame">
           <div class="user-i-d-input">
-            <div class="user-id">User ID</div>
-            <input class="text-input-child" type="text" placeholder="User ID" /> 
-            <input class="text-input-item" type="password" placeholder="Password" />
-
+            <div class="user-id">First Name</div>
+            <input class="text-input-child" type="text" placeholder="Email-Id" /> 
             <div class="password-input">
-              <div class="password">Password</div>
+              <div class="password">Last Name</div>
             </div>
+            <input class="text-input-item" type="text" placeholder="Last Name" />
+            <div class="user-id">
+              <div class="password">Email-Id</div>
+            </div>
+            <input class="text-input-child" type="text" placeholder="First Name" />
+            
+            <div>
+              <div class="password">You are:</div>
+            </div>
+            <select class="password" name="role" style="margin-top: -60px;" required>
+              <option value="" disabled selected>Select a role</option>
+              <option value="Student">Student</option>
+              <option value="Professor">Professor</option>
+              <option value="Medical Incharge">Medical Incharge</option>
+            </select>
+
+            
           </div>
         </div>
         
-        <div class="forgot-pass-btn" style="margin-top: -25px;">
+        <div class="forgot-pass-btn" style="margin-top: -80px;">
           <div style="margin-left: 40px;">
-          <button class="login">Log In</button>
+          <button class="login">Sign Up</button>
           </div>
-          <div style="margin-left: -90px; margin-top: 25px;" >
-          <button class="forgot-password">Forgot Password</button>
-          <button class="sign-up">Sign Up</button>
+          <div style="margin-left: 10px; margin-top: 25px;" >
+          <a class="sign-up" href="login.html">Already registered? Login</a>
           </div>   
         </div>
       </div>

@@ -62,6 +62,10 @@ body {
   justify-content: flex-end;
   max-width: 100%;
 }
+.reg{
+  text-decoration: none;
+  color: #fff;
+}
 .login-as {
   height: 39px;
   width: 273px;

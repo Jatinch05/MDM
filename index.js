@@ -52,7 +52,7 @@ function submitForm(userType) {
     </div>
     <div style="margin-left: -90px; margin-top: 25px;" >
     <button class="forgot">Forgot Password</button>
-    <button class="sign-up">Sign Up</button>
+    <button class="sign-up"><a href="register.html" class="reg">Sign Up</a></button>
     </div>   
   </div>
 </div>`;
