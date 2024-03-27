@@ -80,7 +80,7 @@
             <button id="signUpButton" class="login" type="button">Sign Up</button>
           </form>
         </div style="margin-left: 10px; margin-top: 25px;">
-        <a class="sign-up" href="login.html" style="margin-top: 7px; margin-left: 15px;">Already registered? Login</a>
+        <a class="sign-up" href="index.html" style="margin-top: 7px; margin-left: 15px;">Already registered? Login</a>
         <div class = "sign-up" id="msg" style="margin-top: 7px; margin-left: -30px;"></div>
 
       </div>
@@ -164,6 +164,7 @@
           .catch((error) => {
             console.error("Error adding user: ", error);
           });
+          window.location.href = 'login.html?userType=' + role.toLowerCase();
       })
       .catch((error) => {
         // Handle errors while updating profile
