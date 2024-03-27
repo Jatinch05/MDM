@@ -1,5 +1,5 @@
 function submitForm(userType) {
-            alert('hi')
+            
             window.location.href = 'login.html?userType=' + userType;
 }
 //   var formData = new FormData();

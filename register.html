@@ -164,7 +164,7 @@
           .catch((error) => {
             console.error("Error adding user: ", error);
           });
-          window.location.href = 'login.html?userType=' + role.toLowerCase();
+          window.location.href = 'login.html?userType=' + roleVal.toLowerCase();
       })
       .catch((error) => {
         // Handle errors while updating profile
