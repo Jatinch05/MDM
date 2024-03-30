@@ -117,10 +117,11 @@
             
             const userData = doc.data();
             const role = userData.role
+            const subS =role.toLowerCase()
             
-            if(userType == role.toLowerCase())
+            if(userType == role.toLowerCase() || userType == subS.substring(0,7))
             { 
-              if(userType == 'medical incharge')
+              if(userType == 'medical')
               {
                 const usertypeurl = 'doctor.html'
               window.location.href = usertypeurl

@@ -115,7 +115,7 @@
                     })
                         .then((docRef) => {
                             console.log("User added with ID: ", docRef.id);
-                            alert('Your request is sent');
+                            alert('Certificate is generated');
                             
                         })
                         .catch((error) => {
@@ -247,29 +247,21 @@
     <nav>
         <ul>
             <li>
-                <a href="#" class="logo">
+                <a href="doctor.html" class="logo">
                     <img src="./MDM_logo.jpeg" alt="">
                     <span class="nav-item">MDM</span>
                 </a>
             </li>
-            <li><a href="#">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-item">Home</span>
-                </a></li>
-            <li><a href="#">
+            
+            <li><a href="user.html">
                     <i class="fas fa-user"></i>
                     <span class="nav-item">User</span>
                 </a></li>
-            <li><a href="#">
+            <li><a href="settings.html">
                     <i class="fas fa-cog"></i>
                     <span class="nav-item">Settings</span>
                 </a></li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-envelope"></i>
-                    <span class="nav-item">Message</span>
-                </a>
-            </li>
+           
             <li><a href="#" class="logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-item" id="signOutButton">Log out</span>

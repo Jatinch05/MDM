@@ -70,6 +70,7 @@
                     alert('Certificate sent to ' + professor.dname);
                     // After sending, clear the professor list and request details
                     professorsListContainer.innerHTML = '';
+                    window.location.href="student.html"
                     
                 }).catch(error => {
                     console.error('Error sending certificate:', error);
@@ -171,7 +172,7 @@
     <nav>
         <ul>
             <li>
-                <a href="#" class="logo">
+                <a href="student.html" class="logo">
                     <img src="./MDM_logo.jpeg" alt="">
                     <span class="nav-item">MDM</span>
                 </a>

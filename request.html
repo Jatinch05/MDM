@@ -29,7 +29,7 @@
     <nav>
         <ul>
             <li>
-                <a href="#" class="logo">
+                <a href="student.html" class="logo">
                     <img src="./MDM_logo.jpeg" alt="">
                     <span class="nav-item">MDM</span>
                 </a>
@@ -200,6 +200,7 @@
 </body>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 
@@ -216,6 +217,7 @@
     };
 
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const firestore = getFirestore(app);
     const db = collection(firestore, 'requests');
 
@@ -231,7 +233,7 @@
         var purpose = document.getElementById("purpose").value;
         var mobile = document.getElementById("mobile").value;
         var email = document.getElementById("email").value;
-        var staus = "Pending"
+       
         addDoc(db, {
             studentName: studentName,
             rollNumber: rollNumber,
@@ -243,11 +245,12 @@
             purpose: purpose,
             mobile: mobile,
             email: email,
-            status: status
+            status: "Pending"
         })
             .then((docRef) => {
                 console.log("User added with ID: ", docRef.id);
                 alert('Your request is sent');
+                window.location.href='student.html'
                 navigateToStudentPage();
             })
             .catch((error) => {

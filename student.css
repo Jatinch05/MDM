@@ -123,7 +123,7 @@ nav:hover {
 }
 
 .container {
-    margin-left: 100px;
+    margin-left: 200px;
     margin-right: 10px;
     width: auto;
     height: auto;
@@ -308,5 +308,8 @@ nav:hover {
   .professors-list button {
     display: block;
     margin-bottom: 5px; /* Adjust spacing between buttons */
+}
+#cert{
+    margin-left: 200px;
 }
     

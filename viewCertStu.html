@@ -49,7 +49,7 @@
                 //     console.log("Document ID:", doc.id);
                 //     console.log("Document data:", doc.data());
                 // });
-
+                
                 const q = query(db, where('studentmail', '==', email));
                 console.log("Query:", q);
 
@@ -57,9 +57,12 @@
                 console.log("Query snapshot:", querySnapshot);
 
                 querySnapshot.forEach((doc) => {
+                   
                     
                     const requestData = doc.data();
+                   
                     const id = doc.id;
+                    
                     const url = requestData.url;
                     function base64toBlob(url) {
                         const byteCharacters = atob(url.split(',')[1]);
@@ -114,7 +117,7 @@
     <nav>
         <ul>
             <li>
-                <a href="#" class="logo">
+                <a href="student.html" class="logo">
                     <img src="./MDM_logo.jpeg" alt="">
                     <span class="nav-item">MDM</span>
                 </a>
