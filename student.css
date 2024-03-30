@@ -1,25 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 
-*{
-margin: 0;
-padding: 0;
-outline: none;
-border: none;
-text-decoration: none;
-box-sizing: border-box;
-font-family: "Poppins", sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-body{
-background: #dfe9f5;
+body {
+    background: #dfe9f5;
 }
 
-nav{
-    position:fixed;
+nav {
+    position: fixed;
     top: 0;
     bottom: 0;
-    height:100%;
+    height: 100%;
     Left: 0;
     background: #f7f7f7;
     width: 90px;
@@ -28,24 +28,24 @@ nav{
     box-shadow: 0 20px 35px rgb(128, 128, 128);
 }
 
-.logo{
+.logo {
     text-align: center;
     display: flex;
     transition: all .5s ease;
     margin: 10px 0 0 10px;
 }
 
-.logo img{
+.logo img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
 }
 
-.logo span{
-font-weight: bold;
-padding-left: 15px;
-font-size: 18px;
-text-transform: uppercase;
+.logo span {
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
 nav ul {
@@ -56,11 +56,15 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: inherit; /* Inherit color from parent element */
+    color: inherit;
+    /* Inherit color from parent element */
 }
 
-
-a{
+#cert:hover
+{
+    background-color: transparent!important;
+}
+a {
     position: relative;
     color: rgb(20, 17, 17);
     font-size: 14px;
@@ -70,7 +74,7 @@ a{
 }
 
 
-.fas{
+.fas {
     position: relative;
     width: 70px;
     height: 40px;
@@ -79,23 +83,23 @@ a{
     text-align: center;
 }
 
-.nav-item{
-position: relative;
-top: 12px;
-margin-left: 10px;
+.nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
 }
 
-a:hover{
-    background: #c7bdbd;
+a:hover {
+    background: #898383;
 }
 
-nav:hover{
-    width:200px;
+nav:hover {
+    width: 200px;
     transition: all 0.5s ease;
     /* margin-right: 10px; */
 }
 
-.logout{
+.logout {
     position: absolute;
     bottom: 0;
 }
@@ -105,21 +109,24 @@ nav:hover{
     border-radius: 5px;
 }
 
-.col-xl-5, .col-md-10{
+.col-xl-5,
+.col-md-10 {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
-    align-items:center;
+    justify-content: space-between;
+    align-items: center;
     background-color: rgb(248, 247, 246);
-    padding:10px 10px 10px 20px;
+    padding: 10px 10px 10px 20px;
     border: 1px solid rgb(237, 229, 229);
-    margin:30px 30px 30px 30px ;
+    margin: 30px 30px 30px 30px;
     border-radius: 5px;
 }
 
-.container{
+.container {
     margin-left: 100px;
     margin-right: 10px;
+    width: auto;
+    height: auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -127,44 +134,175 @@ nav:hover{
         display: flex;
         flex-direction: column;
         text-align: center;
+        /* overflow-y: scroll; */
     }
+
+    nav:hover {
+        width: 200px;
+        transition: none;
+        /* margin-right: 10px; */
+    }
+
+    .nav-item {
+        position: relative;
+        top: 12px;
+        /* margin-left: 10px; */
+    }
+
+    .fas {
+        position: relative;
+        width: 70px;
+        height: 40px;
+        /* top: 14px; */
+        font-size: 20px;
+        text-align: center;
+    }
+
 
     nav ul li {
         float: none;
         width: 100%;
     }
 
-    .col-xl-6 .col-md-12{
+    .col-xl-6 .col-md-12 {
         display: flex;
         flex-direction: column;
     }
 }
 
-
-.container-fluid{
+.container-fluid {
     /* overflow: hidden; */
-    display:flexbox;
+    display: flexbox;
     background-color: rgb(248, 247, 246);
     /* margin-left: 133px; */
     margin-right: 10px;
     margin-top: 20px;
     border-radius: 5px;
-  padding: 10px;
-  justify-content:center;
-  /* align-items: center; */
-  /* width:84%; */
- }
-
-#not_acc{
-  display: flex;
-  justify-content:flex-end;
-  align-items:center;
-  border: 0px;
+    padding: 10px;
+    justify-content: center;
+    /* align-items: center; */
+    /* width:84%; */
 }
 
-#welcome_text{
-  border: 0px;
-  /* background-color:; */
-  justify-content:center;
-  align-items: center;
+#not_acc {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 0px;
+    margin: auto;
 }
+
+#welcome_text {
+    border: 0px;
+    /* background-color:; */
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+
+#Acc_logout {
+    border-top: 1px solid rgb(194, 186, 186);
+}
+
+#see_all {
+    text-decoration: underline;
+    border-top: 1px solid rgb(194, 186, 186);
+}
+
+
+@media screen and (max-width: 600px){
+    #not_acc{
+        display: flex;
+        justify-content:space-evenly;
+        align-items:center;
+    }
+}
+
+/* .user-detail {
+    display: flex; 
+   
+    margin-bottom: 30px; 
+    margin-left: -500px;
+  }
+  
+
+  .user-detail span {
+    margin-right: 10px;
+  } */
+  /* Style for each user detail container */
+/* Style for user detail container */
+.user-detail {
+    display: flex;
+    margin-bottom: 30px;
+    transition: background-color 0.3s;
+}
+
+/* Style for request ID */
+.user-detail .request-id {
+    flex-grow: 2;
+    margin-left: -400px;
+}
+
+/* Style for student name */
+.user-detail .student-name {
+    flex-shrink: 0;
+    margin-right: -600px;
+}
+
+/* Hover effect */
+
+/* Style for the user detail container */
+.user-detail {
+    margin-bottom: 10px;
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+}
+
+/* Style for the student details */
+.student-details span {
+    margin-left: -1200px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style for the buttons */
+/* Style for the buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.approve-button, .disapprove-button {
+    padding: 8px 12px; /* Adjust padding for the buttons */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 14px;
+}
+
+/* Add margin between the buttons */
+.approve-button {
+    margin-right: 10px;
+}
+
+
+.approve-button {
+    background-color: green;
+    color: white;
+}
+
+.disapprove-button {
+    background-color: red;
+    color: white;
+}
+#certificateCanvas {
+    display: none;
+  }
+  .professors-list button {
+    display: block;
+    margin-bottom: 5px; /* Adjust spacing between buttons */
+}
+    

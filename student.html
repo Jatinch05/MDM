@@ -10,10 +10,6 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="student.css">
   <!-- <script src="./homepage.js"></script> -->
-  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js"></script>
-  <script src="register.js"></script>
-
 </head>
 
 <body>
@@ -61,16 +57,6 @@
       </div>
       <div class="col-xl-5 col-md-12" id="not_acc">
         <div class="col-md-5 d-flex align-items-end justify-content-end">
-          <!-- <div class="flex-grow-1">
-          <div class="input-group">
-            <form action="#">
-              <input type="text" placeholder="Search Courses" name="search">
-              <button>
-                <i class="fa fa-search" style="font-size: 18px;"></i>
-              </button>
-            </form>
-          </div>
-        </div> -->
           <div class="flex-grow-1" id="notification_icon">
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -84,8 +70,7 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="#">You Have New Notifications</a></li>
-                <li><a class="dropdown-item" href="#">See All</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Link 3</a></li> -->
+                <li><a class="dropdown-item" href="#"id="see_all">See All</a></li>
               </ul>
             </div>
           </div>
@@ -104,7 +89,7 @@
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="#">Account</a></li>
                 <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                <li><a class="dropdown-item" href="#" id="Acc_logout" >Log Out</a></li>
               </ul>
             </div>
           </div>
@@ -116,15 +101,15 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-5 col-md-10">
-        Request for certificate <a href = "request.html"> <img src="Screenshot 2024-03-06 115941.png" alt="" srcset="">
+        <a href="request.html">Request for certificate</a> <img src="Screenshot 2024-03-06 115941.png" alt="" srcset="">
       </div>
 
       <div class="col-xl-5 col-md-10">
-        Forward the cetificate <img src="Screenshot 2024-03-06 115958.png" alt="" srcset="">
+       <a href="forwardcertStu.html"> Forward the cetificate</a> <img src="Screenshot 2024-03-06 115958.png" alt="" srcset="">
 
       </div>
       <div class="col-xl-5 col-md-10">
-        View saved certificates <img src="Screenshot 2024-03-06 120003.png" alt="" srcset="">
+        <a href="viewCertStu.html"> saved certificates</a> <img src="Screenshot 2024-03-06 120003.png" alt="" srcset="">
       </div>
     </div>
   </div>
@@ -132,28 +117,5 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 </body>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAIugyUJBL_fveac-Qu4kHM31L6xTy5BLo",
-    authDomain: "testing-db034.firebaseapp.com",
-    projectId: "testing-db034",
-    storageBucket: "testing-db034.appspot.com",
-    messagingSenderId: "1025335080272",
-    appId: "1:1025335080272:web:0c2e321d6731165bf6a855",
-    measurementId: "G-FE9JLRXGW9"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 
 </html>

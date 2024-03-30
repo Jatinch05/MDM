@@ -75,7 +75,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Name of the Student</label>
-                        <input type="text" class="form-control" placeholder="" name="studentName">
+                        <input type="text" class="form-control" placeholder="" id="studentName">
                     </div>
                 </div>
                 <!--  col-md-6   -->
@@ -83,7 +83,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Roll Number</label>
-                        <input type="text" class="form-control" placeholder="" name="rollNumber">
+                        <input type="text" class="form-control" placeholder="" id="rollNumber">
                     </div>
                 </div>
                 <!--  col-md-6   -->
@@ -94,7 +94,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Branch</label>
-                        <input type="text" class="form-control" placeholder="" name="branch">
+                        <input type="text" class="form-control" placeholder="" id="branch">
                     </div>
 
 
@@ -105,7 +105,7 @@
 
                     <div class="form-group">
                         <label>Semester</label>
-                        <input type="text" class="form-control" name="semester" placeholder="">
+                        <input type="text" class="form-control" id="semester" placeholder="">
                     </div>
                 </div>
                 <!--  col-md-6   -->
@@ -132,7 +132,7 @@
                 <div class="col-md-5">
                     <div class="form-group">
                         <div class='input-group date' id='datepicker1' data-date-format="dd-mm-yyyy">
-                            <input type='text' class="form-control" name="endDate" />
+                            <input type='text' class="form-control" name="endDate" id="endDate" />
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar-alt fa-2x"></i>
                             </span>
@@ -146,7 +146,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nature of Leave</label>
-                        <input type="text" class="form-control" placeholder="" name="natureOfLeave">
+                        <input type="text" class="form-control" placeholder="" id="natureOfLeave">
                     </div>
 
 
@@ -157,33 +157,14 @@
 
                     <div class="form-group">
                         <label>Purpose of Leave</label>
-                        <input type="text" class="form-control" id="phone" placeholder="" name="purpose">
+                        <input type="text" class="form-control"  placeholder="" id="purpose">
                     </div>
                 </div>
                 <!--  col-md-6   -->
             </div>
             <!--  row   -->
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Whether classes are scheduled or not during leave</label>
-                        <input type="text" class="form-control" placeholder="" name="classScheduledOnLeave">
-                    </div>
-
-
-                </div>
-                <!--  col-md-6   -->
-
-                <div class="col-md-6">
-
-                    <div class="form-group">
-                        <label>Address during leave</label>
-                        <input type="text" class="form-control" name="address" placeholder="">
-                    </div>
-                </div>
-                <!--  col-md-6   -->
-            </div>
+          
             <!--  row   -->
 
 
@@ -191,7 +172,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Mobile No.</label>
-                        <input type="tel" class="form-control" placeholder="" name="mobile">
+                        <input type="tel" class="form-control" placeholder="" id="mobile">
                     </div>
 
 
@@ -202,35 +183,21 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="">
+                        <input type="email" class="form-control" id="email" placeholder="">
                     </div>
                 </div>
                 <!--  col-md-6   -->
             </div>
             <!--  row   -->
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="company">Attachments (if any)</label>
-                        <div class="file-field input-field">
-                          <div class="btn">
-                            <input type="file" name="file">
-                          </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <!--  col-md-6   -->
-            </div>
+           
             <!--  row   -->
 
 
 
 
             <div style="padding-top: 20px">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                <button id="submitbtn" class="btn btn-primary btn-lg btn-block">Submit</button>
             </div>
             <div></div> </div>
           </div>
@@ -245,3 +212,63 @@
         <p class="mb-1 mt-2">Web Development Wing, Geekhaven</p>
     </footer>
 </body>
+<script  type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA1ozm9mG_r_7bJ4JjU3xh028dh0CLY5Ic",
+    authDomain: "medical-and-duty-leave.firebaseapp.com",
+    databaseURL: "https://medical-and-duty-leave-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "medical-and-duty-leave",
+    storageBucket: "medical-and-duty-leave.appspot.com",
+    messagingSenderId: "967600001759",
+    appId: "1:967600001759:web:d99e39e4fdd1e7fa1b8f6a",
+    measurementId: "G-BCE50YX5HY"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const firestore = getFirestore(app);
+  const db = collection(firestore, 'requests');
+  
+  function forwardRequest(event)
+  { 
+    event.preventDefault();
+    var studentName = document.getElementById("studentName").value;
+    var rollNumber = document.getElementById("rollNumber").value;
+    var branch = document.getElementById("branch").value;
+    var semester = document.getElementById("semester").value;
+    var startDate = document.getElementById("startDate").value;
+    var endDate = document.getElementById("endDate").value;
+    var natureOfLeave = document.getElementById("natureOfLeave").value;
+    var purpose = document.getElementById("purpose").value;
+    var mobile = document.getElementById("mobile").value;
+    var email = document.getElementById("email").value;
+    var staus = "Pending"
+    addDoc(db, {
+          studentName : studentName,
+          rollNumber : rollNumber,
+          branch : branch,
+          semester : semester,
+          startDate : startDate,
+          endDate : endDate,
+          natureOfLeave : natureOfLeave,
+          purpose : purpose,
+          mobile : mobile,
+          email: email,
+          status : status
+        })
+          .then((docRef) => {
+            console.log("User added with ID: ", docRef.id);
+            alert('Your request is sent');
+            navigateToStudentPage();
+          })
+          .catch((error) => {
+            console.error("Error adding user: ", error);
+          });
+  }
+  const submitbtn = document.getElementById('submitbtn');
+  submitbtn.addEventListener('click', forwardRequest);
+</script>
