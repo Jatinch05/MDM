@@ -139,7 +139,7 @@
           });
         })
         .catch((error) => {
-          const errorMsg=error.message.substring(22).slice(0,-2)
+          const errorMsg=error.message.substring(22).slice(0,-20)
           // Handle errors while updating profile
           alert('Login failed: '+errorMsg)
           console.error('Login failed:', error);

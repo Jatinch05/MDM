@@ -170,6 +170,10 @@ nav:hover {
     }
 }
 
+.container a{
+    text-decoration: none;
+}
+
 .container-fluid {
     /* overflow: hidden; */
     display: flexbox;

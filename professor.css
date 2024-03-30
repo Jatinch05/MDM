@@ -41,6 +41,10 @@ nav{
     border-radius: 50%;
 }
 
+.container a{
+    text-decoration: none;
+}
+
 .logo span{
 font-weight: bold;
 padding-left: 15px;
