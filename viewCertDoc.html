@@ -26,28 +26,39 @@
             appId: "1:967600001759:web:d99e39e4fdd1e7fa1b8f6a",
             measurementId: "G-BCE50YX5HY"
         };
+        function base64toBlob(base64Data) {
+            const byteCharacters = atob(base64Data.split(',')[1]);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            return new Blob([byteArray], { type: 'image/jpeg' });
+        }
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const firestore = getFirestore(app);
-        const db = collection(firestore, 'requests');
-        const q = query(db, where('status', '==', 'Pending'));
+        const db = collection(firestore, 'certificates');
+        const q = query(db);
         const querySnapshot = await getDocs(q);
         var serial = 0
         querySnapshot.forEach((doc) => {
             serial++
             const requestData = doc.data();
             const id = doc.id
+            const blob = base64toBlob(requestData.url);
+            const url = URL.createObjectURL(blob);
             // Create HTML elements to represent the request
             const requestElement = document.createElement('div');
             requestElement.classList.add('user-detail'); // Add user-detail class
             requestElement.innerHTML = `
 <div class = "user-detail">
   <div class="request-id">
-    <span>${serial}.Request ID: ${id}</span>
+    <span>${serial}.Certificate ID: ${id}</span>
   </div>
   <div class="student-name">
-    <span>Student Name: ${requestData.studentName}</span>
+    <a href="${url}" target="_blank"><span>Link</span></a>
   </div></div>
 `;
 

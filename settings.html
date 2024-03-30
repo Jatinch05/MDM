@@ -11,7 +11,7 @@
   <!-- <script src="./homepage.js"></script> -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged,signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -41,16 +41,7 @@
 
                 console.log("User ID:", uid);
                 console.log("Email:", email);
-                const qry = query(newdb, where('email', '==', email)); // Replace 'email' with the field name you used to store the email in Firestore
-                const querySnap = await getDocs(qry);
-                querySnap.forEach((doc) => {
-                    const userData = doc.data();
-                    const displayName = userData.dname;
-                    const dname = document.getElementById('dname')
-                    const emailID = document.getElementById('email')
-                    dname.innerHTML=`${displayName}`
-                    emailID.innerHTML=`${email}`
-                  })
+          
                 }})
 
   </script>
@@ -108,23 +99,15 @@
                         <h5>Display Name</h5>
                     </div>
                     <div class="col-md-8 text-secondary">
-                        <span id = "dname"></span>
+                        <input type="text" id = "dname"></span>
                     </div>
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="col-md-3">
-                        <h5>Email</h5>
-                    </div>
-                    <div class="col-md-8 text-secondary">
-                        <span id="email"></span>
-                    </div>
-                </div>
-                <hr>
+                
 
          <div class="edit-options">
             
-            
+            <button id="Update" class="edit-btn">Update</button>
            
         </div>
       </div>
@@ -137,7 +120,7 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-  import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+  import { getFirestore, collection, addDoc, getDocs, query, where ,updateDoc} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
   const fbConfig = {
     apiKey: "AIzaSyA1ozm9mG_r_7bJ4JjU3xh028dh0CLY5Ic",
@@ -153,7 +136,11 @@
   const appl = initializeApp(fbConfig);
   const authe = getAuth(appl);
   console.log(authe)
+  const fstore = getFirestore(appl);
+  const dbase = collection(fstore, 'forwards');
+  const newdbase = collection(fstore, 'users')
   const signOutButton = document.getElementById('signOutButton');
+  const updateBtn = document.getElementById('Update')
   signOutButton.addEventListener('click', () => {
 
     signOut(authe).then(() => {
@@ -165,5 +152,34 @@
       // An error happened.
       console.error('Error signing out:', error);
     });
-  });</script>
+  });
+  updateBtn.addEventListener('click',() => {
+    onAuthStateChanged(authe, async function (user) {
+            console.log("Auth state changed");
+            if (user) {
+                // User is signed in
+                const uid = user.uid;
+                const email = user.email;
+
+
+                console.log("User ID:", uid);
+                console.log("Email:", email);
+                const newDname = document.getElementById('dname').value
+                const qry = query(newdbase, where('email', '==', email)); // Replace 'email' with the field name you used to store the email in Firestore
+                const querySnap = await getDocs(qry);
+                querySnap.forEach((doc) => {
+                    const requestData = doc.data();
+                    const docRef = doc.ref; // Get reference to the document
+                    updateDoc(docRef, { dname: newDname })
+                        .then(() => {
+                            console.log("Document successfully updated!");
+                        })
+                        .catch((error) => {
+                            console.error("Error updating document: ", error);
+                        });
+                  })
+                }})
+
+  })
+  </script>
 </html>

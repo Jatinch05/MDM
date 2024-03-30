@@ -65,7 +65,7 @@
         </li>
         <li><a href="#" class="logout">
             <i class="fas fa-sign-out-alt"></i>
-            <span class="nav-item">Log out</span>
+            <span class="nav-item" id="signOutButton">Log out</span>
           </a></li>
       </ul>
     </nav>
@@ -277,4 +277,17 @@
   }
   const submitbtn = document.getElementById('submitbtn');
   submitbtn.addEventListener('click', forwardRequest);
+  const signOutButton = document.getElementById('signOutButton');
+    signOutButton.addEventListener('click', () => {
+
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            console.log('User signed out successfully');
+            window.location.href = "index.html"
+            // Redirect to sign-in page or any other page after sign-out if needed
+        }).catch((error) => {
+            // An error happened.
+            console.error('Error signing out:', error);
+        });
+    });
 </script>
