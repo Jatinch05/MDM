@@ -102,6 +102,7 @@
       .then(async (userCredential) => {
         const user = userCredential.user;
         // Set the display name
+      
         // Update successful
         console.log('User logged in:', user);
        
@@ -116,7 +117,8 @@
           const role = userData.role
           
           if(userType == role.toLowerCase())
-          {
+          { 
+            
             const usertypeurl = userType + '.html'
             window.location.href = usertypeurl
           }

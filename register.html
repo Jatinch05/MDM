@@ -160,11 +160,12 @@
         })
           .then((docRef) => {
             console.log("User added with ID: ", docRef.id);
+            window.location.href = 'login.html?userType=' + roleVal.toLowerCase();
           })
           .catch((error) => {
             console.error("Error adding user: ", error);
           });
-          window.location.href = 'login.html?userType=' + roleVal.toLowerCase();
+           
       })
       .catch((error) => {
         // Handle errors while updating profile
