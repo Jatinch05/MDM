@@ -53,7 +53,7 @@
             <div class="col-xl-5 col-md-12" id="welcome_text">
                 <div class="col-md-5 d-flex align-items-start justify-content-start"> <!-- Updated class -->
                     <div>
-                        <h1>Hello Josh!</h1>
+                        <h1>Hello <span id="dname"></span></h1>
                         <p>It’s good to see you again</p>
                     </div>
                 </div>
@@ -107,17 +107,14 @@
                 <a href="viewReq.html">View Requests</a> <img src="Screenshot 2024-03-06 115941.png" alt="" srcset="">
             </div>
 
-            <div class="col-xl-5 col-md-10">
-                Forward the cetificate <img src="Screenshot 2024-03-06 115958.png" alt="" srcset="">
-
-            </div>
+          
         </div>
         <div class="row">
             <div class="col-xl-5 col-md-10">
-                Generate Certificate <img src="print.svg" width="50px" alt="" srcset="">
+                <a href = "genCert.html">Generate Certificate </a><img src="print.svg" width="50px" alt="" srcset="">
             </div>
             <div class="col-xl-5 col-md-10">
-                View saved certificates <img src="Screenshot 2024-03-06 120003.png" alt="" srcset="">
+               <a href></a> View saved certificates <img src="Screenshot 2024-03-06 120003.png" alt="" srcset="">
             </div>
         </div>
     </div>
@@ -127,27 +124,36 @@
         crossorigin="anonymous"></script>
 </body>
 <script type="module">
-    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
     const firebaseConfig = {
-      apiKey: "AIzaSyAIugyUJBL_fveac-Qu4kHM31L6xTy5BLo",
-      authDomain: "testing-db034.firebaseapp.com",
-      projectId: "testing-db034",
-      storageBucket: "testing-db034.appspot.com",
-      messagingSenderId: "1025335080272",
-      appId: "1:1025335080272:web:0c2e321d6731165bf6a855",
-      measurementId: "G-FE9JLRXGW9"
+      apiKey: "AIzaSyA1ozm9mG_r_7bJ4JjU3xh028dh0CLY5Ic",
+      authDomain: "medical-and-duty-leave.firebaseapp.com",
+      databaseURL: "https://medical-and-duty-leave-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "medical-and-duty-leave",
+      storageBucket: "medical-and-duty-leave.appspot.com",
+      messagingSenderId: "967600001759",
+      appId: "1:967600001759:web:d99e39e4fdd1e7fa1b8f6a",
+      measurementId: "G-BCE50YX5HY"
     };
-  
-    // Initialize Firebase
+
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
+    const auth = getAuth(app);
+    console.log(auth)
+    const signOutButton = document.getElementById('signOutButton');
+    signOutButton.addEventListener('click', () => {
+      
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        console.log('User signed out successfully');
+        window.location.href = "login.html"
+        // Redirect to sign-in page or any other page after sign-out if needed
+      }).catch((error) => {
+        // An error happened.
+        console.error('Error signing out:', error);
+      });
+    });</script>
 
 </html>

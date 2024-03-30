@@ -118,9 +118,14 @@
           
           if(userType == role.toLowerCase())
           { 
-            
-            const usertypeurl = userType + '.html'
+            if(userType == 'medical incharge')
+            {
+              const usertypeurl = 'doctor.html'
             window.location.href = usertypeurl
+            }
+            else{
+            const usertypeurl = userType + '.html'
+            window.location.href = usertypeurl}
           }
           else
           {
