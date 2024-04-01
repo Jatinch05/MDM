@@ -39,7 +39,7 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const firestore = getFirestore(app);
-        const db = collection(firestore, 'certificates');
+        const db = collection(firestore, 'Prof_certificates');
         const q = query(db);
         const querySnapshot = await getDocs(q);
         var serial = 0
@@ -87,7 +87,7 @@
     <nav>
         <ul>
             <li>
-                <a href="doctor.html" class="logo">
+                <a href="professor.html" class="logo">
                     <img src="./MDM_logo.jpeg" alt="">
                     <span class="nav-item">MDM</span>
                 </a>

@@ -107,7 +107,7 @@
                     const text = document.createElement('div');
                     text.innerHTML = `<span style="margin-left:100px";>Certificate has been generated. <a id="cert" href=${url} target="_blank"><span style="margin-left:100px";>Tap to View</span></a></span>`
                     document.body.appendChild(text)
-                    const newDB = collection(firestore, 'certificates');
+                    const newDB = collection(firestore, 'Prof_certificates');
                     addDoc(newDB, {
                         url : imgData,
                         id : id,
@@ -142,7 +142,7 @@
             const requestData = doc.data();
             const nature = requestData.natureOfLeave
             const id = doc.id
-            if(nature.toLowerCase() == "medical"){
+            if(nature.toLowerCase() == "duty"){
                 serial++
             // Create HTML elements to represent the request
             const requestElement = document.createElement('div');
@@ -172,7 +172,7 @@
 
                 const requestData = doc.data();
                 const nature = requestData.natureOfLeave
-                if (id == doc.id && nature.toLowerCase() == "medical")
+                if (id == doc.id && nature.toLowerCase() == "duty")
                 // Remove the pending requests list container
                 {
                     const pendingRequestsList = document.getElementById('pendingRequestsList');
@@ -251,7 +251,7 @@
     <nav>
         <ul>
             <li>
-                <a href="doctor.html" class="logo">
+                <a href="professor.html" class="logo">
                     <img src="./MDM_logo.jpeg" alt="">
                     <span class="nav-item">MDM</span>
                 </a>

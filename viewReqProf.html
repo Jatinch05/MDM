@@ -26,45 +26,37 @@
             appId: "1:967600001759:web:d99e39e4fdd1e7fa1b8f6a",
             measurementId: "G-BCE50YX5HY"
         };
-        function base64toBlob(base64Data) {
-            const byteCharacters = atob(base64Data.split(',')[1]);
-            const byteNumbers = new Array(byteCharacters.length);
-            for (let i = 0; i < byteCharacters.length; i++) {
-                byteNumbers[i] = byteCharacters.charCodeAt(i);
-            }
-            const byteArray = new Uint8Array(byteNumbers);
-            return new Blob([byteArray], { type: 'image/jpeg' });
-        }
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const firestore = getFirestore(app);
-        const db = collection(firestore, 'certificates');
-        const q = query(db);
+        const db = collection(firestore, 'requests');
+        const q = query(db, where('status', '==', 'Pending'));
         const querySnapshot = await getDocs(q);
         var serial = 0
         querySnapshot.forEach((doc) => {
-            serial++
+            
             const requestData = doc.data();
-            const id = doc.id
-            const blob = base64toBlob(requestData.url);
-            const url = URL.createObjectURL(blob);
+            const nature = requestData.natureOfLeave
+            if (nature.toLowerCase() == "duty")
+            {   serial++
+                const id = doc.id
             // Create HTML elements to represent the request
             const requestElement = document.createElement('div');
             requestElement.classList.add('user-detail'); // Add user-detail class
             requestElement.innerHTML = `
 <div class = "user-detail">
   <div class="request-id">
-    <span>${serial}.Certificate ID: ${id}</span>
+    <span>${serial}.Request ID: ${id}</span>
   </div>
   <div class="student-name">
-    <a href="${url}" target="_blank"><span>Link</span></a>
+    <span>Student Name: ${requestData.studentName}</span>
   </div></div>
 `;
 
             // Append the request element to a container in your HTML document
             document.getElementById('pendingRequestsList').appendChild(requestElement);
-        });
+       } });
         const signOutButton = document.getElementById('signOutButton');
     signOutButton.addEventListener('click', () => {
 
@@ -87,12 +79,12 @@
     <nav>
         <ul>
             <li>
-                <a href="doctor.html" class="logo">
+                <a href="professor.html" class="logo">
                     <img src="./MDM_logo.jpeg" alt="">
                     <span class="nav-item">MDM</span>
                 </a>
             </li>
-            
+    
             <li><a href="./user.html">
                     <i class="fas fa-user"></i>
                     <span class="nav-item">User</span>
@@ -101,6 +93,7 @@
                     <i class="fas fa-cog"></i>
                     <span class="nav-item">Settings</span>
                 </a></li>
+
             <li><a href="#" class="logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-item" id="signOutButton">Log out</span>
