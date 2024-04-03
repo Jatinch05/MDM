@@ -47,7 +47,7 @@
 
         async function forwardCertificate(url) {
     const professorsListContainer = document.querySelector('.professors-list');
-    professorsListContainer.innerHTML = ''; // Clear previous content
+  
 
     try {
         const professors = await getProfessors();
@@ -246,11 +246,24 @@
         <div class="row">
             <div class="col-xl-5 col-md-12" id="welcome_text">
                 <div class="col-md-5 d-flex align-items-start justify-content-start">
-                    <div id="pendingRequestsList"></div>
                     <div class="professors-list"></div>
+                    </div>
+             
                 </div>
+                
+            </div>
+        
+        <div class="row">
+            <div class="col-xl-5 col-md-12" id="welcome_text">
+                
+                <div class="col-md-5 d-flex align-items-start justify-content-start">
+                    <div id="pendingRequestsList"></div>
+                    
+                </div>
+                
             </div>
         </div>
+    </div>
     </div>
 </body>
 
