@@ -29,6 +29,7 @@
         const auth = getAuth(app);
         const firestore = getFirestore(app);
         const db = collection(firestore, 'certificates');
+        const db2 = collection(firestore,'Prof_certificates')
 
         onAuthStateChanged(auth, async function (user) {
             console.log("Auth state changed");
@@ -91,6 +92,47 @@
                     // Append the request element to a container in your HTML document
                     document.getElementById('pendingRequestsList').appendChild(requestElement);
                 });
+                const q2 = query(db2, where('studentmail', '==', email));
+                console.log("Query:", q2);
+
+                const querySnap = await getDocs(q2);
+                console.log("Query snapshot:", querySnap);
+                querySnap.forEach((doc) => {
+                   
+                    
+                   const requestData = doc.data();
+                  
+                   const id = doc.id;
+                   
+                   const url = requestData.url;
+                   function base64toBlob(url) {
+                       const byteCharacters = atob(url.split(',')[1]);
+                       const byteNumbers = new Array(byteCharacters.length);
+                       for (let i = 0; i < byteCharacters.length; i++) {
+                           byteNumbers[i] = byteCharacters.charCodeAt(i);
+                       }
+                       const byteArray = new Uint8Array(byteNumbers);
+                       return new Blob([byteArray], { type: 'image/jpeg' });
+                   }
+                   const blob = base64toBlob(url);
+                   const newurl = URL.createObjectURL(blob);
+                   // Create HTML elements to represent the request
+                   const requestElement = document.createElement('div');
+                   requestElement.classList.add('user-detail'); // Add user-detail class
+                   requestElement.innerHTML = `
+                       <div class="user-detail">
+                           <div class="request-id">
+                               <span>Certificate ID: ${id}</span>
+                           </div>
+                           <div class="student-name">
+                               <span><a href=${newurl} target ="_blank">Link</a></span>
+                           </div>
+                       </div>
+                   `;
+                   // Append the request element to a container in your HTML document
+                   document.getElementById('pendingRequestsList').appendChild(requestElement);
+               });
+
             } else {
                 // No user is signed in
                 console.log("No user is signed in.");
